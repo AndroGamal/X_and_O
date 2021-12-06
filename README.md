@@ -298,3 +298,90 @@ this code to build page XandO game.
       },
     );
     }
+    
+    
+this is page to Sega game.
+    
+<image src="screen%20shot/1638817691297.jpg" width=400 height=800>
+     
+this code to page Sega game.
+     
+         Scaffold(
+      drawer: _navigation,
+      appBar: AppBar(
+        title: Text("Siga"),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("X:O"),
+              Text(_tx.toString() + ":" + _to.toString(),
+                  style: TextStyle(fontSize: 12)),
+              GridView.count(
+                scrollDirection: Axis.vertical,
+                crossAxisCount: 3,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 5.0,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: List.generate(9, (index) {
+                  return Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Container(
+                      padding: EdgeInsets.all(0.0),
+                      height: 135.0,
+                      width: 135.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      child: FlatButton(
+                        child: Text(
+                          _st[index],
+                          style: TextStyle(fontSize: 30, color: Colors.black),
+                        ),
+                        padding: EdgeInsets.all(0.0),
+                        onPressed: () {
+                          if (_click) {
+                            if (_st[index] == "X") {
+                              last = index;
+                            } else if (last != -1&&_st[index] != "O") {
+                              setState(() {
+                                _st[index] = "X";
+                                _st[last] = "";
+                                _r_x(last, index);
+                              });
+                              last = -1;
+                              _click = false;
+                            }
+                          } else {
+                            if (_st[index] == "O") {
+                              last = index;
+                            } else if (last != -1&&_st[index] != "X") {
+                              setState(() {
+                                _st[index] = "O";
+                                _st[last] = "";
+                                _r_o(last, index);
+                              });
+                              last = -1;
+                              _click = true;
+                            }
+                          }
+
+                          //  _enable[index] = false;
+                        },
+                      ),
+                    ),
+                  );
+                }),
+              )
+            ],
+          ),
+        ),
+      ),
+   
+ );
