@@ -99,8 +99,8 @@ this code to build page XandO game.
 #this page to play X and O.
 
  <image src="screen%20shot/1638817691306.jpg" width=400 height=800>
-
- Scaffold(
+ 
+        Scaffold(
       drawer: _navigation,
       // ),
       appBar: AppBar(
@@ -172,4 +172,5 @@ this code to build page XandO game.
         ),
       ),
     );
-  }
+ 
+  
