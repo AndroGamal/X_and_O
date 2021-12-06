@@ -173,4 +173,128 @@ this code to build page XandO game.
       ),
     );
  
+ this code to chick if X is winner , this code chick 8 way to win.
   
+       void _r_x(int c) {
+    _x.add(c);
+    if (_x.indexOf(0) != -1 && _x.indexOf(1) != -1 && _x.indexOf(2) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(3) != -1 &&
+        _x.indexOf(4) != -1 &&
+        _x.indexOf(5) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(6) != -1 &&
+        _x.indexOf(7) != -1 &&
+        _x.indexOf(8) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(0) != -1 &&
+        _x.indexOf(4) != -1 &&
+        _x.indexOf(8) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(2) != -1 &&
+        _x.indexOf(4) != -1 &&
+        _x.indexOf(6) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(0) != -1 &&
+        _x.indexOf(3) != -1 &&
+        _x.indexOf(6) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(1) != -1 &&
+        _x.indexOf(4) != -1 &&
+        _x.indexOf(7) != -1) {
+      _stop_game("X");
+    } else if (_x.indexOf(2) != -1 &&
+        _x.indexOf(5) != -1 &&
+        _x.indexOf(8) != -1) {
+      _stop_game("X");
+    }
+  }
+
+ this code is to chick if O is wenner , this code chick 8 way to win. 
+  
+      
+    void _r_o(int c) {
+    _o.add(c);
+    if (_o.indexOf(0) != -1 && _o.indexOf(1) != -1 && _o.indexOf(2) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(3) != -1 &&
+        _o.indexOf(4) != -1 &&
+        _o.indexOf(5) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(6) != -1 &&
+        _o.indexOf(7) != -1 &&
+        _o.indexOf(8) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(0) != -1 &&
+        _o.indexOf(4) != -1 &&
+        _o.indexOf(8) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(2) != -1 &&
+        _o.indexOf(4) != -1 &&
+        _o.indexOf(6) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(0) != -1 &&
+        _o.indexOf(3) != -1 &&
+        _o.indexOf(6) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(1) != -1 &&
+        _o.indexOf(4) != -1 &&
+        _o.indexOf(7) != -1) {
+      _stop_game("O");
+    } else if (_o.indexOf(2) != -1 &&
+        _o.indexOf(5) != -1 &&
+        _o.indexOf(8) != -1) {
+      _stop_game("O");
+    }
+    }
+  
+  this code to stop game and show who is winner.
+  
+   <image src="screen%20shot/1638823512346.jpg" width=400 height=800>
+  
+      void _stop_game(String winner) {
+     Toastan().show_unusual(winner + " is winner", context);
+    for (int i = 0; i < _enable.length; i++) {
+      _enable[i] = false;
+    }
+    FlatButton button = FlatButton(
+      child: Text(
+        "OK",
+        style: TextStyle(color: Colors.deepPurple),
+      ),
+      onPressed: _new_play,
+    );
+    Container veiw = Container(
+      height: 200.0,
+      width: 200.0,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/image/winner.gif"),
+            Text(
+              winner + " is winner",
+              style: TextStyle(fontSize: 25),
+            )
+          ],
+        ),
+      ),
+    );
+    AlertDialog alert = AlertDialog(
+      content: veiw,
+      actions: [button],
+    );
+    if (winner == "X") {
+      _tx++;
+    } else {
+      _to++;
+    }
+    showDialog<void>(
+      context: context,
+      // false = user must tap button, true = tap outside dialog
+      builder: (BuildContext dialogContext) {
+        _contextdailog1 = dialogContext;
+        return alert;
+      },
+    );
+    }
